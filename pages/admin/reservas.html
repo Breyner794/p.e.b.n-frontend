@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Reservas - Aerolinea Express</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">Aerolinea Express</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="reservas.html">Reservas</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logoutBtn">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Gestión de Reservas</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#reservaModal">
+                <i class="fas fa-plus"></i> Nueva Reserva
+            </button>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <table id="reservasTable" class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Pasajero</th>
+                            <th>Vuelo</th>
+                            <th>Fecha de Reserva</th>
+                            <th>Clase</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Se llena dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Crear/Editar Reserva -->
+    <div class="modal fade" id="reservaModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Nueva Reserva</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="reservaForm">
+                        <input type="hidden" id="reservaId">
+                        <div class="mb-3">
+                            <label for="id_pasajero" class="form-label">Pasajero</label>
+                            <select class="form-select" id="id_pasajero" required>
+                                <!-- Se llena dinámicamente -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="id_vuelo" class="form-label">Vuelo</label>
+                            <select class="form-select" id="id_vuelo" required>
+                                <!-- Se llena dinámicamente -->
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="fecha_de_reserva" class="form-label">Fecha de Reserva</label>
+                            <input type="datetime-local" class="form-control" id="fecha_de_reserva" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="clase" class="form-label">Clase</label>
+                            <select class="form-select" id="clase" required>
+                                <option value="Economico">Económico</option>
+                                <option value="Business">Business</option>
+                                <option value="Primera">Primera</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="estado_de_la_reserva" class="form-label">Estado de la Reserva</label>
+                            <select class="form-select" id="estado_de_la_reserva" required>
+                                <option value="Reservado">Reservado</option>
+                                <option value="Cancelado">Cancelado</option>
+                                <option value="Abordado">Abordado</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="saveReserva">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../../assets/js/admin/reservas.js"></script>
+</body>
+</html>

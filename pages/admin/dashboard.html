@@ -1,0 +1,167 @@
+<!-- pages/admin/dashboard.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrativo - Aerolinea Express</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Aerolinea Express - Admin</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.html">Inicio</a>
+                    </li>
+                    <!-- Operaciones -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Operaciones
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="aeropuertos.html">Aeropuertos</a></li>
+                            <li><a class="dropdown-item" href="aviones.html">Aviones</a></li>
+                            <li><a class="dropdown-item" href="vuelos.html">Vuelos</a></li>
+                            <li><a class="dropdown-item" href="tripulacion.html">Tripulación</a></li>
+                        </ul>
+                    </li>
+                    <!-- Clientes -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Clientes
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="pasajeros.html">Pasajeros</a></li>
+                            <li><a class="dropdown-item" href="reservas.html">Reservas</a></li>
+                            <li><a class="dropdown-item" href="equipaje.html">Equipaje</a></li>
+                        </ul>
+                    </li>
+                    <!-- RRHH -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Recursos Humanos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="empleados.html">Empleados</a></li>
+                            <li><a class="dropdown-item" href="roles.html">Roles</a></li>
+                            <li><a class="dropdown-item" href="usuarios.html">Usuarios</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logoutBtn">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="container mt-4">
+        <h2>Módulos del Sistema</h2>
+        
+        <!-- Operaciones -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h4 class="mb-3">Operaciones</h4>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-plane-departure fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Aeropuertos</h5>
+                        <p class="card-text">Gestión de aeropuertos y terminales</p>
+                        <a href="aeropuertos.html" class="btn btn-primary">Acceder</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-plane fa-3x mb-3 text-success"></i>
+                        <h5 class="card-title">Aviones</h5>
+                        <p class="card-text">Control de flota aérea</p>
+                        <a href="aviones.html" class="btn btn-success">Acceder</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-route fa-3x mb-3 text-info"></i>
+                        <h5 class="card-title">Vuelos</h5>
+                        <p class="card-text">Programación de vuelos</p>
+                        <a href="vuelos.html" class="btn btn-info">Acceder</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-users fa-3x mb-3 text-warning"></i>
+                        <h5 class="card-title">Tripulación</h5>
+                        <p class="card-text">Gestión de tripulantes</p>
+                        <a href="tripulacion.html" class="btn btn-warning">Acceder</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clientes -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <h4 class="mb-3">Clientes</h4>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-user fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Pasajeros</h5>
+                        <p class="card-text">Gestión de pasajeros</p>
+                        <a href="pasajeros.html" class="btn btn-primary">Acceder</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-ticket-alt fa-3x mb-3 text-success"></i>
+                        <h5 class="card-title">Reservas</h5>
+                        <p class="card-text">Control de reservaciones</p>
+                        <a href="reservas.html" class="btn btn-success">Acceder</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body text-center">
+                        <i class="fas fa-suitcase fa-3x mb-3 text-info"></i>
+                        <h5 class="card-title">Equipaje</h5>
+                        <p class="card-text">Gestión de equipaje</p>
+                        <a href="equipaje.html" class="btn btn-info">Acceder</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+        import { checkAuth, logout } from '../../assets/js/auth.js';
+
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAuth();
+            document.getElementById('logoutBtn').addEventListener('click', logout);
+        });
+    </script>
+</body>
+</html>

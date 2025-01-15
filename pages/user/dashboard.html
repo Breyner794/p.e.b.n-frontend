@@ -3,9 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Aerolinea Express</title>
+    <title>Dashboard Usuario - Aerolinea Express</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../assets/css/styles.css" rel="stylesheet">
+    <!-- DataTables -->
+    <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <style>
+    /* Opción 1: Gradiente Moderno */
+    body {
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Ajustes para las tarjetas */
+    .card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Ajustes para los modales */
+    .modal-content {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+    }
+
+    /* Opción 2: Fondo con Patrón de Aviones */
+    /* Descomenta esta sección y comenta la primera opción si prefieres este estilo */
+    /*
+    body {
+        background-color: #e8f0fe;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2l2 2-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2 2 2h-2v2h2l-2 2 2 2-2 2z' fill='%239C92AC' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+    */
+</style>
+
 </head>
 <body>
     <!-- Navbar -->
@@ -17,59 +62,148 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Vuelos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Reservas</a>
-                    </li>
+                    
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="../../index.html" onclick="logout()">Cerrar Sesión</a>
+                        <a class="nav-link" href="#" id="logoutBtn">Cerrar Sesión</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Contenido principal -->
+    <!-- Contenido Principal -->
     <div class="container mt-4">
-        <h2>Bienvenido <span id="userName"></span></h2>
-        <div class="row mt-4">
-            <!-- Aquí irá el contenido específico del dashboard -->
+        <div class="row">
+            <!-- Tarjeta de Aeropuertos -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-plane-departure fa-3x mb-3 text-primary"></i>
+                        <h5 class="card-title">Aeropuertos</h5>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aeropuertosModal">
+                            Ver Aeropuertos
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta de Vuelos -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-plane fa-3x mb-3 text-success"></i>
+                        <h5 class="card-title">Vuelos</h5>
+                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#vuelosModal">
+                            Ver Vuelos
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta de Aviones -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <i class="fas fa-plane-arrival fa-3x mb-3 text-info"></i>
+                        <h5 class="card-title">Aviones</h5>
+                        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#avionesModal">
+                            Ver Aviones
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Aeropuertos -->
+    <div class="modal fade" id="aeropuertosModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Aeropuertos Disponibles</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <table id="aeropuertosTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Código IATA</th>
+                                <th>Nombre</th>
+                                <th>Ciudad</th>
+                                <th>País</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Se llena dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Vuelos -->
+    <div class="modal fade" id="vuelosModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Vuelos Disponibles</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <table id="vuelosTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Número</th>
+                                <th>Origen</th>
+                                <th>Destino</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Se llena dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Aviones -->
+    <div class="modal fade" id="avionesModal" tabindex="-">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Aviones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <table id="avionesTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Id_Avion</th>
+                                <th>Modelo</th>
+                                <th>Capacidad</th>
+                                <th>Estado</th>
+                                <th>Año de Fabricacion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script type="module">
-        import {checkAuth, logout} from '../../assets/js/auth.js'
-
-        window.logout = logout;
-
-    document.addEventListener('DOMContentLoaded', function() {
-        const token = checkAuth();
-        const user = JSON.parse(localStorage.getItem('user'));
-        
-        if (user) {
-            document.getElementById('userName').textContent = user.nombre;
-        }
-    });
-
-    </script>
-    <!-- <script>
-        // Verificar autenticación al cargar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            const token = checkAuth();
-            const user = JSON.parse(localStorage.getItem('user'));
-            
-            if (user) {
-                document.getElementById('userName').textContent = user.nombre;
-            }
-        });
-    </script> -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../../assets/js/user/dashboard.js"></script>
 </body>
 </html>
