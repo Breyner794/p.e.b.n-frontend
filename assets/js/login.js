@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     // Redireccionar según el rol
                     if (data.user.rol === 1) { // Admin
-                        window.location.href = '/frontend/pages/admin/dashboard.html';
+                        window.location.href = '../../pages/admin/dashboard.html'; ///frontend/pages/admin/dashboard.html
                     } else { // Usuario normal
-                        window.location.href = '/frontend/pages/user/dashboard.html';
+                        window.location.href = '../../pages/user/dashboard.html';
                     }
                 } else {
                     errorAlert.textContent = data.message || 'Error al iniciar sesión';
