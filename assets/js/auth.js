@@ -4,7 +4,7 @@ export function checkAuth() {
     const user = JSON.parse(localStorage.getItem('user'));
 
     if (!token || !user) {
-        window.location.href = '/frontend/index.html';
+        window.location.href = '../../index.html';
         return null;
     }
 
@@ -13,11 +13,11 @@ export function checkAuth() {
     
     if (user.rol === 1) { // Admin
         if (!currentPath.includes('/admin/')) {
-            window.location.href = '/frontend/pages/admin/dashboard.html';
+            window.location.href = '../../pages/admin/dashboard.html';
         }
     } else { // Usuario normal
         if (!currentPath.includes('/user/')) {
-            window.location.href = '/frontend/pages/user/dashboard.html';
+            window.location.href = '../../pages/user/dashboard.html';
         }
     }
 
@@ -27,5 +27,5 @@ export function checkAuth() {
 export function logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    window.location.href = '/frontend/index.html';
+    window.location.href = '../../index.html';
 }
