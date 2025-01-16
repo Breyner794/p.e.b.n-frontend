@@ -1,5 +1,5 @@
 const config = {
-    API_URL: 'http://localhost:5000/api'
+    API_URL: 'https://p-e-b-n-backend.onrender.com/api'
 };
 
 export { config };
